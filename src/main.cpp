@@ -11,6 +11,7 @@
 #include "ModSettingsViewController.hpp"
 #include "Banners/FileParser.hpp"
 #include "Banners/Banners.hpp"
+#include "Tweaks/Logo.hpp"
 
 
 static modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
@@ -65,6 +66,9 @@ custom_types::Helpers::Coroutine textScaler(HMUI::CurvedTextMeshPro* text) {
 MAKE_HOOK_MATCH(MainMenuViewController_DidActivate, &GlobalNamespace::MainMenuViewController::DidActivate, void, GlobalNamespace::MainMenuViewController* self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
     MainMenuViewController_DidActivate(self, firstActivation, addedToHierarchy, screenSystemEnabling);
     if (firstActivation) {
+        CustomMenu::Tweaks::Logo::onLoad();
+        CustomMenu::Tweaks::Logo::setState();
+
         if (getModConfig().enable_quotes.GetValue()) {
             bool customQuotes = getModConfig().custom_quotes.GetValue();
 

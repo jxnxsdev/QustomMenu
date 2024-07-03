@@ -5,6 +5,8 @@
 #include "ModConfig.hpp"
 #include "Banners/FileParser.hpp"
 #include "Banners/Banners.hpp"
+#include "Tweaks/Logo.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 
 using namespace BSML::Lite;
 using namespace UnityEngine;
@@ -23,7 +25,10 @@ void DidActivate(ViewController* self, bool firstActivation, bool addedToHierarc
         auto* disable_logo = AddConfigValueToggle(parent, getModConfig().disable_logo);
 
         auto* reloadButton = CreateUIButton(parent, "Apply Changes", []() {
-            CustomMenu::Banners::ReloadBanners();
+            BSML::MainThreadScheduler::Schedule([]() {
+                CustomMenu::Tweaks::Logo::onLoad();
+                CustomMenu::Tweaks::Logo::setState();
+            });
         });
 
         // Quotes
