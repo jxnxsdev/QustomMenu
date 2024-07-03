@@ -62,6 +62,13 @@ add_library(
         src/Quotes/quotes.cpp
         include/Quotes/quotes.hpp
         include/constants.hpp
+        src/ModSettingsViewController.cpp
+        include/ModSettingsViewController.hpp
+        include/Banners/FileParser.hpp
+        include/Banners/Banners.hpp
+        src/Banners/Banners.cpp
+        include/Tweaks/Logo.hpp
+        src/Tweaks/Logo.cpp
 )
 
 # for inline hook

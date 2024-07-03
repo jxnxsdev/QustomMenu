@@ -12,6 +12,7 @@ namespace CustomMenu::Quotes {
     static std::vector<std::string> quotes = {
             "!bsr 25f",
             "Demo Version",
+
             };
 
     static std::vector<std::string> customQuotes = {

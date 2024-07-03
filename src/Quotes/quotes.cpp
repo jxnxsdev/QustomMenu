@@ -33,6 +33,11 @@ namespace CustomMenu::Quotes {
     }
 
     void EnsureFile() {
+        std::string modPath = Constants::ModPath;
+        if (!std::filesystem::exists(modPath)) {
+            std::filesystem::create_directory(modPath);
+        }
+
         std::string path = Constants::QuotePath;
         if (!std::filesystem::exists(path)) {
             std::ofstream file(path);
