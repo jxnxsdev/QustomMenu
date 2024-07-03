@@ -7,6 +7,10 @@ namespace CustomMenu::Tweaks::Logo {
     }
 
     void setState() {
+        if (!logo) {
+            return;
+        }
+
         bool disableLogo = getModConfig().disable_logo.GetValue();
         if (disableLogo) {
             logo->SetActive(false);
