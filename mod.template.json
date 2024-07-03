@@ -14,7 +14,7 @@
   "fileCopies": [
     {
       "name": "default.png",
-      "destinations": "/sdcard/ModData/com.beatgames.beatsaber/Mods/qustommenu/Banners/default.png"
+      "destination": "/sdcard/ModData/com.beatgames.beatsaber/Mods/qustommenu/Banners/default.png"
     }
   ],
   "coverImage": "cover.png"
