@@ -1,5 +1,8 @@
 # Qustom Menu
 
+![GitHub Downloads (specific asset, all releases)](https://img.shields.io/github/downloads/jxnxsdev/QustomMenu/Qustom.Menu.qmod)
+
+
 Customise the Beat Saber menu:
 
 - Minecraft like Splash screen
