@@ -40,10 +40,18 @@ MOD_EXTERN_FUNC void setup(CModInfo *info) noexcept {
 }
 
 custom_types::Helpers::Coroutine textScaler(HMUI::CurvedTextMeshPro* text) {
-    float currentSize = 40.0f;
-    float direction = false; // wether the text is scaling up or down
+    UnityW<HMUI::CurvedTextMeshPro> textW = text;
 
-    while (true) {
+    float currentSize = 40.0f;
+    bool direction = false; // wether the text is scaling up or down
+    bool isntDead = true;
+
+    while (isntDead) {
+
+        if(!textW.isAlive()) {
+            isntDead = false;
+            co_return;
+        }
 
         if (currentSize >= 70.0f) {
             direction = false;
@@ -57,10 +65,10 @@ custom_types::Helpers::Coroutine textScaler(HMUI::CurvedTextMeshPro* text) {
             currentSize -= 0.3f;
         }
 
-        text->set_fontSize(currentSize);
-
         co_yield reinterpret_cast<System::Collections::IEnumerator*>(UnityEngine::WaitForSeconds::New_ctor(0.01f));
     }
+
+    co_return;
 }
 
 MAKE_HOOK_MATCH(MainMenuViewController_DidActivate, &GlobalNamespace::MainMenuViewController::DidActivate, void, GlobalNamespace::MainMenuViewController* self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
