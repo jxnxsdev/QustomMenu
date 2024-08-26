@@ -11,6 +11,7 @@ on:
       - 'dev/*'
       - 'feat/*'
       - 'fix/*'
+      - 'develop/*'
     paths-ignore:
       - '**.yml'
       - '!.github/workflows/build-ndk.yml'
